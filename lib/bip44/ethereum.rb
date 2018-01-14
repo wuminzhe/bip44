@@ -1,7 +1,7 @@
 module Bip44
   module Ethereum
-    def get_ethereum_address(index)
-      node = @wallet_node.node_for_path("M/0/#{index}")
+    def get_ethereum_address(path)
+      node = @wallet_node.node_for_path(path)
 
       # from bitcoin public key to ethereum public key
       group = ECDSA::Group::Secp256k1
