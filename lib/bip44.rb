@@ -15,8 +15,19 @@ module Bip44
     puts words
     seed = BipMnemonic.to_seed(mnemonic: words)
     ethereum_wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'/0")
+    puts 'ethereum xprv: ' + ethereum_wallet.xprv
     puts 'ethereum xpub: ' + ethereum_wallet.xpub
     bitcoin_wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'/0")
+    puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
+  end
+
+  def self.from_mnemonic(words)
+    seed = BipMnemonic.to_seed(mnemonic: words)
+    ethereum_wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'/0")
+    puts 'ethereum xprv: ' + ethereum_wallet.xprv
+    puts 'ethereum xpub: ' + ethereum_wallet.xpub
+    bitcoin_wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'/0")
+    puts 'bitcoin xprv: ' + bitcoin_wallet.xprv
     puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
   end
 end
