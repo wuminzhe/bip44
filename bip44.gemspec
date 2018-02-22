@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A ruby library to generate Ethereum addresses from a hierarchical deterministic wallet according to the BIP44 standard."
   spec.description   = "A ruby library to generate Ethereum addresses from a hierarchical deterministic wallet according to the BIP44 standard."
-  spec.homepage      = "https://github.com/wuminzhe/bip44.rb"
+  spec.homepage      = "https://github.com/wuminzhe/bip44"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
