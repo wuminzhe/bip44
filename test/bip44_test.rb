@@ -31,6 +31,16 @@ class Bip44Test < Minitest::Test
     assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
   end
 
+  def test_create_wallet_from_xprv
+    seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
+    first_wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'/0")
+    xprv = first_wallet.xprv
+
+    wallet = Bip44::Wallet.from_xprv(xprv)
+    first_address = wallet.get_ethereum_address("M/0")
+    assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
+  end
+
   def test_get_bitcoin_address
     seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
     first_wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'")

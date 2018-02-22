@@ -18,6 +18,7 @@ module Bip44
     puts 'ethereum xprv: ' + ethereum_wallet.xprv
     puts 'ethereum xpub: ' + ethereum_wallet.xpub
     bitcoin_wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'/0")
+    puts 'bitcoin xprv: ' + bitcoin_wallet.xprv
     puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
   end
 

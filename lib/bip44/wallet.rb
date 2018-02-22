@@ -25,6 +25,11 @@ module Bip44
       Wallet.new(wallet_node)
     end
 
+    def self.from_xprv(xprv)
+      wallet_node = MoneyTree::Node.from_bip32(xprv)
+      Wallet.new(wallet_node)
+    end
+
     def xpub
       @wallet_node.to_bip32
     end
