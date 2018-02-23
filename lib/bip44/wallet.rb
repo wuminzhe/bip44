@@ -30,12 +30,24 @@ module Bip44
       Wallet.new(wallet_node)
     end
 
+    def sub_wallet(path)
+      Wallet.new(@wallet_node.node_for_path(path))
+    end
+
     def xpub
       @wallet_node.to_bip32
     end
 
     def xprv
       @wallet_node.to_bip32(:private)
+    end
+
+    def public_key
+      @wallet_node.public_key.to_hex
+    end
+
+    def private_key
+      @wallet_node.private_key.to_hex
     end
 
     private

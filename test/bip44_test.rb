@@ -51,6 +51,14 @@ class Bip44Test < Minitest::Test
     assert_equal first_address, "1Kn4i7KeCrypPtjBZ6TmVFVCSiBsV7u3VW"
   end
 
+  def test_derive_child_wallet
+    seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
+    wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'/0")
+
+    sub_wallet = wallet.sub_wallet("m/0")
+    assert_equal sub_wallet.public_key, "0260819a9b57936c9164ba7d0c629b85b5be33481d89c09a20b1521d1f540c1605"
+  end
+
   # just for show the way I use to complete the gem
   def test_it_can_create_a_new_ethereum_address_from_mnemonic
     words = BipMnemonic.to_mnemonic(bits: 128) # 1. 生成一个助记词（参见 BIP39）
