@@ -56,6 +56,7 @@ class Bip44Test < Minitest::Test
     wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'/0")
 
     sub_wallet = wallet.sub_wallet("m/0")
+    puts sub_wallet.private_key
     assert_equal sub_wallet.public_key, "0260819a9b57936c9164ba7d0c629b85b5be33481d89c09a20b1521d1f540c1605"
   end
 
