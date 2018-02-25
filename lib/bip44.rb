@@ -33,8 +33,4 @@ module Bip44
     puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
   end
 
-  def self.print()
-    words = 'roof never second cheese sock blast ride country picnic purpose federal ignore'
-
-  end
 end
