@@ -15,7 +15,7 @@ I will add more coin support to it.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bip44'
+gem 'bip44', '~> 0.2.13'
 ```
 
 And then execute:
