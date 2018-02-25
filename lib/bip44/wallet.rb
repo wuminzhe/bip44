@@ -42,10 +42,6 @@ module Bip44
       @wallet_node.to_bip32(:private)
     end
 
-    def public_key
-      @wallet_node.public_key.to_hex
-    end
-
     def private_key
       @wallet_node.private_key.to_hex
     end

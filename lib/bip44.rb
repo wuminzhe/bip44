@@ -4,6 +4,7 @@ require 'digest/sha3'
 require 'rlp'
 require 'money-tree'
 require 'bip_mnemonic'
+require 'eth'
 require 'bip44/utils'
 require 'bip44/bitcoin'
 require 'bip44/ethereum'
@@ -30,5 +31,10 @@ module Bip44
     bitcoin_wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'/0")
     puts 'bitcoin xprv: ' + bitcoin_wallet.xprv
     puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
+  end
+
+  def self.print()
+    words = 'roof never second cheese sock blast ride country picnic purpose federal ignore'
+
   end
 end

@@ -4,5 +4,9 @@ module Bip44
       node = @wallet_node.node_for_path(path)
       node.to_address
     end
+
+    def bitcoin_address
+      @wallet_node.public_key.to_hex
+    end
   end
 end

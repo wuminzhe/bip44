@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "digest-sha3", "~> 1.1.0"
   spec.add_dependency "rlp", "~> 0.7.3"
   spec.add_dependency "bip_mnemonic"
+  spec.add_dependency "eth"
 end

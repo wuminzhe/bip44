@@ -1,5 +1,7 @@
 # ip44 for ruby
 
+IMPORTANT: there is a serious bug of version <= 0.2.12, so use >= 0.2.13
+
 A ruby library to generate multi coin addresses from a hierarchical deterministic wallet according to the [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) standard.
 
 Internally it uses [money-tree](https://github.com/GemHQ/money-tree) for the deterministic private and public keys which allows to use many additional features like deriving address from mnemonic backups (BIP32).
