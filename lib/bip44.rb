@@ -32,5 +32,5 @@ module Bip44
     puts 'bitcoin xprv: ' + bitcoin_wallet.xprv
     puts 'bitcoin xpub: ' + bitcoin_wallet.xpub
   end
-
 end
+

@@ -8,5 +8,9 @@ module Bip44
     def bitcoin_address
       @wallet_node.public_key.to_hex
     end
+
+    def public_key
+      @wallet_node.public_key.to_hex
+    end
   end
 end
