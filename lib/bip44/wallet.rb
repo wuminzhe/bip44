@@ -42,8 +42,13 @@ module Bip44
       @wallet_node.to_bip32(:private)
     end
 
-    def private_key
+    def private_key(wif: true)
+      return @wallet_node.private_key.to_wif if wif == true
       @wallet_node.private_key.to_hex
+    end
+
+    def public_key
+      @wallet_node.public_key.uncompressed.to_hex
     end
 
     private

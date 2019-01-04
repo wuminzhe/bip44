@@ -5,12 +5,13 @@ module Bip44
       node.to_address
     end
 
-    def bitcoin_address
-      @wallet_node.public_key.to_hex
+    def get_bitcoin_address(index)
+      sub_wallet = sub_wallet()
+      sub_wallet.bitcoin_address
     end
 
-    def public_key
-      @wallet_node.public_key.to_hex
+    def bitcoin_address
+      @wallet_node.public_key.to_address
     end
   end
 end
