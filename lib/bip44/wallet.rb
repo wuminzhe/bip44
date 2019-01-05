@@ -34,16 +34,22 @@ module Bip44
       Wallet.new(@wallet_node.node_for_path(path))
     end
 
-    def xpub
-      @wallet_node.to_bip32
+    def xpub(testnet: false)
+      return @wallet_node.to_bip32(:public, network: :bitcoin_testnet) if testnet
+      @wallet_node.to_bip32(:public)
     end
 
-    def xprv
+    def xprv(testnet: :false)
+      return @wallet_node.to_bip32(:private, network: :bitcoin_testnet) if testnet
       @wallet_node.to_bip32(:private)
     end
 
-    def private_key(wif: true)
-      return @wallet_node.private_key.to_wif if wif == true
+    def wif(compressed: true, testnet: false)
+      return @wallet_node.private_key.to_wif(compressed: compressed, network: :bitcoin_testnet) if testnet
+      @wallet_node.private_key.to_wif(compressed: compressed)
+    end
+
+    def private_key
       @wallet_node.private_key.to_hex
     end
 

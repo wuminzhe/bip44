@@ -1,15 +1,5 @@
 module Bip44
   module Ethereum
-    def get_ethereum_address(path)
-      sub_wallet = sub_wallet(path)
-      sub_wallet.ethereum_address
-    end
-
-    def get_child_ethereum_address(index)
-      sub_wallet = sub_wallet()
-      sub_wallet.ethereum_address
-    end
-
     def ethereum_address
       # from bitcoin public key to ethereum public key
       group = ECDSA::Group::Secp256k1

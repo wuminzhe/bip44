@@ -10,7 +10,7 @@ class Bip44Test < Minitest::Test
   def test_get_addresses_from_wallet
     seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
     first_wallet = Bip44::Wallet.from_seed(seed, "m/44'/60'/0'")
-    first_address = first_wallet.get_ethereum_address("M/0/0")
+    first_address = first_wallet.sub_wallet("M/0/0").ethereum_address
 
     assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
   end
@@ -18,7 +18,7 @@ class Bip44Test < Minitest::Test
   def test_create_wallet_from_mnemonic
     words = "actress chest crazy extend alley tag firm drive renew notice confirm hand"
     first_wallet = Bip44::Wallet.from_mnemonic(words, "m/44'/60'/0'")
-    first_address = first_wallet.get_ethereum_address("M/0/0")
+    first_address = first_wallet.sub_wallet("M/0/0").ethereum_address
 
     assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
   end
@@ -29,7 +29,7 @@ class Bip44Test < Minitest::Test
     xpub = first_wallet.xpub
 
     wallet = Bip44::Wallet.from_xpub(xpub)
-    first_address = wallet.get_ethereum_address("M/0")
+    first_address = wallet.sub_wallet("M/0").ethereum_address
     assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
   end
 
@@ -39,7 +39,7 @@ class Bip44Test < Minitest::Test
     xprv = first_wallet.xprv
 
     wallet = Bip44::Wallet.from_xprv(xprv)
-    first_address = wallet.get_ethereum_address("M/0")
+    first_address = wallet.sub_wallet("M/0").ethereum_address
     assert_equal first_address, "0xf35d683226da7cc652299ea5f8798f1a8e8812cf"
   end
 
@@ -49,8 +49,22 @@ class Bip44Test < Minitest::Test
     xpub = first_wallet.xpub
 
     wallet = Bip44::Wallet.from_xpub(xpub)
-    first_address = wallet.get_bitcoin_address("M/0/0")
+    first_address = wallet.sub_wallet("M/0/0").bitcoin_address
     assert_equal first_address, "1Kn4i7KeCrypPtjBZ6TmVFVCSiBsV7u3VW"
+  end
+
+  def test_to_wif
+    seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
+    wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'")
+
+    assert_equal wallet.wif, 'L5BFS3WxaL5snVnmd9Q2Yw6eLPukbk9xsicWzaHoPAZLYAJYUmui'
+  end
+
+  def test_bitcoin_testnet_wif
+    seed = "895f9fe6ea00db7f97ff181e21b4303c0246e8342c3775b935ed41e7841e4234aa0331866f1931a8b5d56d7f49f6323ffb91aaaccc9522b2dbfb14aaf6960f73"
+    wallet = Bip44::Wallet.from_seed(seed, "m/44'/0'/0'")
+
+    assert_equal wallet.wif(compressed: false, testnet: true), '93PV54y9PHwdh63W18JFi4m7ZYKAMD4mr7HmCnFoCAZhjcaEVap'
   end
 
   # noise present panda vault cloth uniform possible crew defense village appear two
