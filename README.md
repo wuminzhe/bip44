@@ -1,4 +1,4 @@
-# ip44 for ruby
+# bip44 for ruby
 
 IMPORTANT: there is a serious bug of version <= 0.2.13, so use >= 0.2.14
 
